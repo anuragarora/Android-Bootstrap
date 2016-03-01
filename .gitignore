@@ -30,3 +30,12 @@ proguard/
 
 # Android Studio captures folder
 captures/
+
+#IntelliJ Idea ide files
+**.iml
+.idea/*
+/.idea/workspace.xml
+/.idea/libraries
+
+#Mac specific
+**.DS_Store
