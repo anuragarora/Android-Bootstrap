@@ -4,19 +4,8 @@ import com.anurag.androidbootstrap.R;
 import com.anurag.androidbootstrap.network.NetworkManager;
 import com.anurag.androidbootstrap.network.RetrofitNetworkManager;
 
-import java.security.GeneralSecurityException;
-import java.security.cert.CertificateException;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
 
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 
 import static com.anurag.androidbootstrap.module.ApplicationModule.resources;
@@ -36,22 +25,23 @@ public class NetworkManagerModule {
 
     private static OkHttpClient getHttpClient() {
         if (sHttpClient == null) {
-            sHttpClient = new OkHttpClient();
-            sHttpClient.newBuilder().time
-            sHttpClient.setReadTimeout(TIMEOUT, TimeUnit.SECONDS);
-            sHttpClient.setConnectTimeout(TIMEOUT, TimeUnit.SECONDS);
+            sHttpClient.newBuilder()
+                    .retryOnConnectionFailure(true)
+                    .readTimeout(TIMEOUT, TimeUnit.SECONDS)
+                    .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
+                    .build();
 
             // Setting the client to trust all certificates
-            installTrustManagerToClient(sHttpClient);
+            //installTrustManagerToClient(sHttpClient);
 
             // Adding interceptor to inject basic authorisation
-            sHttpClient.interceptors().add(basicAuthorizationRequestInterceptor());
+            // sHttpClient.interceptors().add(basicAuthorizationRequestInterceptor());
         }
 
         return sHttpClient;
     }
 
-    private static TrustManager[] getTrustManager() {
+    /*private static TrustManager[] getTrustManager() {
         // Create a trust manager that does not validate certificate chains
         return new TrustManager[]{
                 new X509TrustManager() {
@@ -89,11 +79,11 @@ public class NetworkManagerModule {
         } catch (GeneralSecurityException e) {
             Logger.e(TAG, e.getMessage());
         }
-    }
+    }*/
 
-    private static Interceptor basicAuthorizationRequestInterceptor() {
+    /*private static Interceptor basicAuthorizationRequestInterceptor() {
         String encodedAuthString = FileUtils.createStringFromInputStream(resources().openRawResource(R.raw.client_credentials));
         Logger.i("credentials","string: "+encodedAuthString);
         return new BasicAuthorizationRequestInterceptor(stringEncryptor(), encodedAuthString);
-    }
+    }*/
 }
