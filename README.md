@@ -20,7 +20,7 @@ Our autoformatting rules are as follows:
 
 ### Assets
 
-Assets should be added to the correct directory, e.g. drawable-hdpi or drawable-xxxhdpi based on their density. These directories can be found under `PampersRewards/app/src/main/res`
+Assets should be added to the correct directory, e.g. drawable-hdpi or drawable-xxxhdpi based on their density. These directories can be found under `~/app/src/main/res`
 
 [Here](https://www.youtube.com/watch?v=zhszwkcay2A) and [here](http://developer.android.com/guide/topics/resources/more-resources.html#Dimension) are short intros for understanding density independence
 

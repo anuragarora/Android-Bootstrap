@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Android-Bootstrap</string>
+
+    <!-- OpenWeatherMap api -->
+    <string name="base_url">http://api.openweathermap.org</string>
+    <string name="weather_open_weather_map_appid">721cb50cc767c368b9839f30e803df39</string>
+    <string name="title_activity_weather">WeatherActivity</string>
 </resources>
