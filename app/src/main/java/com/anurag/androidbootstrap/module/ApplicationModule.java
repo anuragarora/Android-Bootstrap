@@ -4,8 +4,10 @@ import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
-import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
+
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 
 /**
  * Created by anurag on 02/03/16.
@@ -29,8 +31,8 @@ public class ApplicationModule {
         return sApplication.getResources().getDisplayMetrics();
     }
 
-    public static TelephonyManager telephonyManager() {
-        return (TelephonyManager) sApplication.getSystemService(Context.TELEPHONY_SERVICE);
+    public static FusedLocationProviderClient getFusedLocationClient (){
+        return LocationServices.getFusedLocationProviderClient(applicationContext());
     }
 
     public static Handler mainThreadHandler() {
