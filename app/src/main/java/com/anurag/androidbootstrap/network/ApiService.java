@@ -3,9 +3,10 @@ package com.anurag.androidbootstrap.network;
 import com.anurag.androidbootstrap.model.weather.WeatherForecastResponse;
 import com.anurag.androidbootstrap.model.weather.WeatherResponse;
 
-import retrofit.Call;
-import retrofit.http.GET;
-import retrofit.http.Query;
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.Query;
+
 
 /**
  * Endpoints for the REST web services

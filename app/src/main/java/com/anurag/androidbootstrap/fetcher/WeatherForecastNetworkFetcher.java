@@ -7,9 +7,9 @@ import com.anurag.androidbootstrap.network.NetworkManager;
 import com.anurag.androidbootstrap.util.Logger;
 
 import de.greenrobot.event.EventBus;
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by anurag on 18/04/17.
@@ -35,13 +35,13 @@ public class WeatherForecastNetworkFetcher implements WeatherForecastFetcher, Ca
     }
 
     @Override
-    public void onResponse(Response<WeatherForecastResponse> response, Retrofit retrofit) {
+    public void onResponse(Call<WeatherForecastResponse> call, Response<WeatherForecastResponse> response) {
         Logger.i(WeatherForecastNetworkFetcher.class.getSimpleName(), "Response successfully received");
         mEventBus.post(new WeatherForecastSuccessEvent(response.body()));
     }
 
     @Override
-    public void onFailure(Throwable t) {
+    public void onFailure(Call<WeatherForecastResponse> call, Throwable t) {
         Logger.i(WeatherForecastNetworkFetcher.class.getSimpleName(), t.getMessage());
         Logger.i(WeatherForecastNetworkFetcher.class.getSimpleName(), "Response failure");
         mEventBus.post(new GetWeatherFailureResponseEvent());

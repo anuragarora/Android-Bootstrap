@@ -112,15 +112,10 @@ public class WeatherActivity extends BaseActivity implements OnSuccessListener<L
         setContentView(R.layout.activity_weather);
         ButterKnife.bind(this);
         mEventBus.register(this);
-        //mGPS = new GPS(this);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //mWeatherFetcher.getWeatherByCityName("Tempe");
 
         mViewSwitcher.setBackgroundResource(BackgroundHelper.getBackground());
-        //Logger.i(TAG, "Calling weather by cityname");
-        //mWeatherFetcher.getWeatherByCityName("Tempe");
-        //mWeatherForecastFetcher.getWeatherForecastByGeoLocation("33.424564", "-111.94");
 
         if (ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -128,6 +123,8 @@ public class WeatherActivity extends BaseActivity implements OnSuccessListener<L
         } else {
             getLastLocation();
         }
+        Toast.makeText(this, "Please turn on location for fetching weather info", Toast.LENGTH_SHORT)
+                .show();
     }
 
     /**

@@ -3,7 +3,7 @@ package com.anurag.androidbootstrap.network;
 import com.anurag.androidbootstrap.model.weather.WeatherForecastResponse;
 import com.anurag.androidbootstrap.model.weather.WeatherResponse;
 
-import retrofit.Callback;
+import retrofit2.Callback;
 
 /**
  * Created by anurag on 02/03/16.

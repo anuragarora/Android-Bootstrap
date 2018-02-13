@@ -1,10 +1,11 @@
 package com.anurag.androidbootstrap.module;
 
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import retrofit.Converter;
-import retrofit.GsonConverterFactory;
+import retrofit2.Converter;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by anurag on 09/04/17.

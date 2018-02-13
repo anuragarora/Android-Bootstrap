@@ -6,11 +6,12 @@ import com.anurag.androidbootstrap.R;
 import com.anurag.androidbootstrap.model.weather.WeatherForecastResponse;
 import com.anurag.androidbootstrap.model.weather.WeatherResponse;
 import com.anurag.androidbootstrap.util.Logger;
-import com.squareup.okhttp.OkHttpClient;
 
-import retrofit.Callback;
-import retrofit.Converter;
-import retrofit.Retrofit;
+import okhttp3.OkHttpClient;
+import retrofit2.Callback;
+import retrofit2.Converter;
+import retrofit2.Retrofit;
+
 
 /**
  * Created by anurag on 02/03/16.

@@ -3,9 +3,10 @@ package com.anurag.androidbootstrap.module;
 import com.anurag.androidbootstrap.R;
 import com.anurag.androidbootstrap.network.NetworkManager;
 import com.anurag.androidbootstrap.network.RetrofitNetworkManager;
-import com.squareup.okhttp.OkHttpClient;
 
 import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 
 import static com.anurag.androidbootstrap.module.ApplicationModule.resources;
 import static com.anurag.androidbootstrap.module.ConverterModule.gsonConverter;
@@ -26,10 +27,11 @@ public class NetworkManagerModule {
 
     private static OkHttpClient okClient() {
         if (sOkClient == null) {
-            sOkClient = new OkHttpClient();
-            sOkClient.setRetryOnConnectionFailure(true);
-            sOkClient.setReadTimeout(TIMEOUT, TimeUnit.SECONDS);
-            sOkClient.setConnectTimeout(TIMEOUT, TimeUnit.SECONDS);
+            sOkClient = new OkHttpClient.Builder()
+                    .retryOnConnectionFailure(true)
+                    .readTimeout(TIMEOUT, TimeUnit.SECONDS)
+                    .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
+                    .build();
         }
 
         return sOkClient;
